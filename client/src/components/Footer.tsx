@@ -1,6 +1,7 @@
 import { Link } from "wouter";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Sparkles, ArrowUpRight } from "lucide-react";
 import { SiFacebook, SiLinkedin, SiInstagram, SiX } from "react-icons/si";
+import { motion } from "framer-motion";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -25,45 +26,55 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground" data-testid="footer">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="relative bg-gradient-to-b from-background to-primary/5 border-t border-white/10" data-testid="footer">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
-            <span className="font-heading font-bold text-2xl mb-4 block">
-              ArdntLogic
-            </span>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed mb-4">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary via-accent to-primary flex items-center justify-center">
+                <Sparkles className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-heading font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                ArdntLogic
+              </span>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
               Helping local businesses thrive online with professional website
               design, SEO, and digital marketing solutions.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {socialLinks.map((social) => (
-                <a
+                <motion.a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors"
+                  className="w-10 h-10 rounded-xl bg-muted/50 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent/50 hover:bg-accent/10 transition-all duration-300"
                   aria-label={social.label}
                   data-testid={`link-social-${social.label.toLowerCase()}`}
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <social.icon className="w-4 h-4" />
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="font-heading font-semibold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}>
                     <span
-                      className="text-primary-foreground/80 hover:text-accent transition-colors cursor-pointer text-sm"
+                      className="group flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors cursor-pointer text-sm"
                       data-testid={`link-footer-${link.label.toLowerCase()}`}
                     >
                       {link.label}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                     </span>
                   </Link>
                 </li>
@@ -72,16 +83,17 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Legal</h4>
-            <ul className="space-y-2">
+            <h4 className="font-heading font-semibold text-lg mb-6">Legal</h4>
+            <ul className="space-y-3">
               {legalLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}>
                     <span
-                      className="text-primary-foreground/80 hover:text-accent transition-colors cursor-pointer text-sm"
+                      className="group flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors cursor-pointer text-sm"
                       data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                     >
                       {link.label}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                     </span>
                   </Link>
                 </li>
@@ -90,31 +102,46 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Contact</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-sm text-primary-foreground/80">
-                <Phone className="w-4 h-4 text-accent flex-shrink-0" />
-                <a href="tel:+1234567890" className="hover:text-accent transition-colors">
+            <h4 className="font-heading font-semibold text-lg mb-6">Contact</h4>
+            <ul className="space-y-4">
+              <li>
+                <a 
+                  href="tel:+1234567890" 
+                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-accent transition-colors group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                    <Phone className="w-4 h-4 text-accent" />
+                  </div>
                   (123) 456-7890
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-sm text-primary-foreground/80">
-                <Mail className="w-4 h-4 text-accent flex-shrink-0" />
-                <a href="mailto:info@ardntlogic.com" className="hover:text-accent transition-colors">
+              <li>
+                <a 
+                  href="mailto:info@ardntlogic.com" 
+                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-accent transition-colors group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                    <Mail className="w-4 h-4 text-accent" />
+                  </div>
                   info@ardntlogic.com
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/80">
-                <MapPin className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-4 h-4 text-accent" />
+                </div>
                 <span>123 Business Ave, Suite 100<br />Your City, ST 12345</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
-          <p className="text-primary-foreground/60 text-sm">
+        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} ArdntLogic. All rights reserved.
+          </p>
+          <p className="text-muted-foreground text-sm">
+            Made with <span className="text-accent">♥</span> for local businesses
           </p>
         </div>
       </div>

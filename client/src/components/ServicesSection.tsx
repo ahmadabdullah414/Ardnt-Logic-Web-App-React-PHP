@@ -1,4 +1,5 @@
 import ServiceCard from "./ServiceCard";
+import { motion } from "framer-motion";
 import {
   Globe,
   Search,
@@ -55,29 +56,52 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-16 md:py-24 bg-background" data-testid="section-services">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+    <section className="py-24 md:py-32 relative overflow-hidden" data-testid="section-services">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/50 to-transparent" />
+      
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6"
+          >
+            Our Services
+          </motion.span>
           <h2
-            className="font-heading font-bold text-3xl md:text-4xl mb-4"
+            className="font-heading font-extrabold text-3xl md:text-4xl lg:text-5xl mb-6"
             data-testid="text-services-headline"
           >
-            Complete Digital Package for Your Local Business
+            Everything You Need to{" "}
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Succeed Online
+            </span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            At ArdntLogic, we understand the unique challenges faced by local
-            businesses. Whether you're in construction, property management, or any
-            other niche, we provide tailored services that make your business
-            visible, grow online, and succeed.
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            From stunning websites to powerful SEO, we provide all the tools 
+            local businesses need to thrive in the digital world.
           </p>
-        </div>
+        </motion.div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <ServiceCard
               key={service.title}
               icon={service.icon}
               title={service.title}
               description={service.description}
+              index={index}
             />
           ))}
         </div>
