@@ -7,34 +7,40 @@ import { motion } from "framer-motion";
 // todo: remove mock functionality - replace with real testimonials from API
 const testimonials = [
   {
-    quote: "ArdntLogic helped us redesign our website, improved our SEO, and boosted our leads. We now rank higher on Google and convert more customers.",
-    name: "John Doe",
-    company: "XYZ Construction",
+    quote: "ArdntLogic helped us redesign our website improved our SEO and boosted our leads. We now rank higher on Google and convert more customers.",
+    name: "Michael Chen",
+    company: "ServiceNow",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces",
   },
   {
-    quote: "Their review management system helped us build trust with new clients. The monthly posts keep our site fresh, and we're seeing more online engagement.",
-    name: "Jane Smith",
-    company: "Smith Properties",
+    quote: "Their review management system helped us build trust with new clients. The monthly posts keep our site fresh and we're seeing more online engagement.",
+    name: "Sarah Martinez",
+    company: "Workday",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=faces",
   },
   {
-    quote: "We were struggling to get found online. After working with ArdntLogic, our phone started ringing with new leads every week.",
-    name: "Mike Johnson",
-    company: "Johnson Plumbing",
+    quote: "We were struggling to get found online. After working with ArdntLogic our phone started ringing with new leads every week.",
+    name: "David Thompson",
+    company: "VMware",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=faces",
   },
   {
     quote: "The team is incredibly responsive and really understands what local businesses need. Best investment we've made for our restaurant.",
-    name: "Sarah Chen",
-    company: "Golden Dragon Restaurant",
+    name: "Emily Rodriguez",
+    company: "Splunk",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=faces",
   },
   {
-    quote: "Finally, a digital agency that doesn't require a huge upfront investment. The $299/month package has everything we need.",
-    name: "Tom Williams",
-    company: "Williams Landscaping",
+    quote: "Finally a digital agency that doesn't require a huge upfront investment. The $299/month package has everything we need.",
+    name: "James Wilson",
+    company: "Palo Alto Networks",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=faces",
   },
   {
     quote: "Our competitors are jealous of how professional our website looks. ArdntLogic delivered beyond our expectations.",
-    name: "Lisa Brown",
-    company: "Brown's Auto Repair",
+    name: "Jennifer Lee",
+    company: "Nvidia",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&crop=faces",
   },
 ];
 

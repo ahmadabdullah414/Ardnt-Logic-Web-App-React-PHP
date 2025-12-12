@@ -10,14 +10,16 @@ import { motion } from "framer-motion";
 // todo: remove mock functionality - replace with real testimonials from API
 const testimonials = [
   {
-    quote: "ArdntLogic helped us redesign our website, improved our SEO, and boosted our leads. We now rank higher on Google and convert more customers.",
-    name: "John Doe",
-    company: "XYZ Construction",
+    quote: "ArdntLogic helped us redesign our website improved our SEO and boosted our leads. We now rank higher on Google and convert more customers.",
+    name: "Michael Chen",
+    company: "ServiceNow",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces",
   },
   {
-    quote: "Their review management system helped us build trust with new clients. The monthly posts keep our site fresh, and we're seeing more online engagement.",
-    name: "Jane Smith",
-    company: "Smith Properties",
+    quote: "Their review management system helped us build trust with new clients. The monthly posts keep our site fresh and we're seeing more online engagement.",
+    name: "Sarah Martinez",
+    company: "Workday",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=faces",
   },
 ];
 
