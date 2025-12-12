@@ -139,8 +139,8 @@ export default function Terms() {
             <h2 className="font-heading font-bold text-2xl mt-12 mb-6">Contact Us</h2>
             <p className="text-muted-foreground leading-relaxed">
               If you have any questions about these Terms of Service, please contact us at{" "}
-              <a href="mailto:info@ardntlogic.com" className="text-accent hover:underline">
-                info@ardntlogic.com
+              <a href="mailto:contact@ardntlogic.com" className="text-accent hover:underline">
+                contact@ardntlogic.com
               </a>.
             </p>
           </motion.div>

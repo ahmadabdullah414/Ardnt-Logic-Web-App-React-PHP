@@ -40,7 +40,7 @@ const comparisons = [
 
 export default function Pricing() {
   return (
-    <main className="pt-20" data-testid="page-pricing">
+    <main className="pt-20 overflow-x-hidden" data-testid="page-pricing">
       <section className="py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/60" />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
@@ -112,9 +112,9 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="overflow-x-auto"
+            className="overflow-x-auto max-w-full"
           >
-            <table className="w-full bg-card rounded-2xl overflow-hidden border border-white/10" data-testid="table-comparison">
+            <table className="w-full min-w-[600px] bg-card rounded-2xl overflow-hidden border border-white/10" data-testid="table-comparison">
               <thead>
                 <tr className="border-b border-white/10">
                   <th className="text-left p-6 font-heading font-semibold">Feature</th>

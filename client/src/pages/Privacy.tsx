@@ -99,14 +99,14 @@ export default function Privacy() {
 
             <h2 className="font-heading font-bold text-2xl mt-12 mb-6">Your Rights</h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              You have the right to access, update, or delete your personal information. Contact us at info@ardntlogic.com to exercise these rights.
+              You have the right to access, update, or delete your personal information. Contact us at contact@ardntlogic.com to exercise these rights.
             </p>
 
             <h2 className="font-heading font-bold text-2xl mt-12 mb-6">Contact Us</h2>
             <p className="text-muted-foreground leading-relaxed">
               If you have any questions about this Privacy Policy, please contact us at{" "}
-              <a href="mailto:info@ardntlogic.com" className="text-accent hover:underline">
-                info@ardntlogic.com
+              <a href="mailto:contact@ardntlogic.com" className="text-accent hover:underline">
+                contact@ardntlogic.com
               </a>.
             </p>
           </motion.div>

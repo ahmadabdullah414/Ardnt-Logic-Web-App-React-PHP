@@ -87,7 +87,7 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-4">
             <motion.a
-              href="tel:+1234567890"
+              href="tel:+447723347193"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
               data-testid="link-phone"
               whileHover={{ scale: 1.05 }}
@@ -95,7 +95,7 @@ export default function Navbar() {
               <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center">
                 <Phone className="w-4 h-4 text-accent" />
               </div>
-              <span className="hidden lg:inline">(123) 456-7890</span>
+              <span className="hidden lg:inline">+44 7723347193</span>
             </motion.a>
             <Link href="/contact">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
@@ -130,7 +130,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-white"
               data-testid="mobile-menu"
             >
               <div className="pb-6 pt-2 space-y-2">

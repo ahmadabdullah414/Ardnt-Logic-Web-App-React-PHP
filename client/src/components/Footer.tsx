@@ -18,10 +18,10 @@ const legalLinks = [
 ];
 
 const socialLinks = [
-  { href: "https://facebook.com", icon: SiFacebook, label: "Facebook" },
-  { href: "https://twitter.com", icon: SiX, label: "X" },
-  { href: "https://linkedin.com", icon: SiLinkedin, label: "LinkedIn" },
-  { href: "https://instagram.com", icon: SiInstagram, label: "Instagram" },
+  { href: "https://web.facebook.com/profile.php?id=61578018772346&_rdc=1&_rdr#", icon: SiFacebook, label: "Facebook" },
+  { href: "https://x.com/ardntlogic/", icon: SiX, label: "X" },
+  { href: "https://www.linkedin.com/in/ardnt-logic-0b0b39371/", icon: SiLinkedin, label: "LinkedIn" },
+  { href: "https://www.instagram.com/ardntlogic/", icon: SiInstagram, label: "Instagram" },
 ];
 
 export default function Footer() {
@@ -106,31 +106,31 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a 
-                  href="tel:+1234567890" 
+                  href="tel:+447723347193" 
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-accent transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                     <Phone className="w-4 h-4 text-accent" />
                   </div>
-                  (123) 456-7890
+                  +44 7723347193
                 </a>
               </li>
               <li>
                 <a 
-                  href="mailto:info@ardntlogic.com" 
+                  href="mailto:contact@ardntlogic.com" 
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-accent transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                     <Mail className="w-4 h-4 text-accent" />
                   </div>
-                  info@ardntlogic.com
+                  contact@ardntlogic.com
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-4 h-4 text-accent" />
                 </div>
-                <span>123 Business Ave, Suite 100<br />Your City, ST 12345</span>
+                <span>PO Box 4385, Cardiff, CF14 8LH, UK</span>
               </li>
             </ul>
           </div>

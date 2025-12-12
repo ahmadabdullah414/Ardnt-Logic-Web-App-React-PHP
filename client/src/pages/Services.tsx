@@ -114,9 +114,20 @@ const services = [
   },
 ];
 
+const serviceImages = [
+  "https://i.postimg.cc/FKQMNBTQ/1.jpg",
+  "https://i.postimg.cc/X7RhkPSB/2.jpg",
+  "https://i.postimg.cc/R09Djn0x/3.jpg",
+  "https://i.postimg.cc/wvjbB8LK/4.jpg",
+  "https://i.postimg.cc/63bb2jf0/5.jpg",
+  "https://i.postimg.cc/90vx1DSF/6.jpg",
+  "https://i.postimg.cc/wj5WcTkz/7.jpg",
+  "https://i.postimg.cc/CKmmXPtH/8.jpg",
+];
+
 export default function Services() {
   return (
-    <main className="pt-20" data-testid="page-services">
+    <main className="pt-20 overflow-x-hidden" data-testid="page-services">
       <section className="py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/60" />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
@@ -207,11 +218,15 @@ export default function Services() {
                 </div>
                 <div className="flex-1 w-full">
                   <motion.div 
-                    className="aspect-square max-w-md mx-auto bg-gradient-to-br from-muted via-muted to-accent/10 rounded-3xl flex items-center justify-center border border-white/10 relative overflow-hidden group"
+                    className="aspect-square max-w-md mx-auto rounded-3xl relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <service.icon className="w-32 h-32 text-accent/20 group-hover:text-accent/30 transition-colors duration-500" />
+                    <img 
+                      src={serviceImages[index]}
+                      alt={service.title}
+                      className="absolute inset-0 w-full h-full object-cover rounded-3xl"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                   </motion.div>
                 </div>
               </motion.div>

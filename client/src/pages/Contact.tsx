@@ -8,39 +8,39 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    content: "(123) 456-7890",
-    link: "tel:+1234567890",
+    content: "+44 7723347193",
+    link: "tel:+447723347193",
   },
   {
     icon: Mail,
     title: "Email",
-    content: "info@ardntlogic.com",
-    link: "mailto:info@ardntlogic.com",
+    content: "contact@ardntlogic.com",
+    link: "mailto:contact@ardntlogic.com",
   },
   {
     icon: MapPin,
     title: "Address",
-    content: "123 Business Ave, Suite 100\nYour City, ST 12345",
+    content: "PO Box 4385, Cardiff, CF14 8LH, UK",
     link: null,
   },
   {
     icon: Clock,
     title: "Business Hours",
-    content: "Mon - Fri: 9:00 AM - 5:00 PM",
+    content: "Mon - Sat: 9:00 AM - 5:00 PM",
     link: null,
   },
 ];
 
 const socialLinks = [
-  { href: "https://facebook.com", icon: SiFacebook, label: "Facebook" },
-  { href: "https://twitter.com", icon: SiX, label: "X" },
-  { href: "https://linkedin.com", icon: SiLinkedin, label: "LinkedIn" },
-  { href: "https://instagram.com", icon: SiInstagram, label: "Instagram" },
+  { href: "https://web.facebook.com/profile.php?id=61578018772346&_rdc=1&_rdr#", icon: SiFacebook, label: "Facebook" },
+  { href: "https://x.com/ardntlogic/", icon: SiX, label: "X" },
+  { href: "https://www.linkedin.com/in/ardnt-logic-0b0b39371/", icon: SiLinkedin, label: "LinkedIn" },
+  { href: "https://www.instagram.com/ardntlogic/", icon: SiInstagram, label: "Instagram" },
 ];
 
 export default function Contact() {
   return (
-    <main className="pt-20" data-testid="page-contact">
+    <main className="pt-20 overflow-x-hidden" data-testid="page-contact">
       <section className="py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent/60" />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />

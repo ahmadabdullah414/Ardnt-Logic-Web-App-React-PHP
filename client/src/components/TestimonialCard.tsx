@@ -1,15 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface TestimonialCardProps {
   quote: string;
   name: string;
   company: string;
+  image?: string;
   index?: number;
 }
 
-export default function TestimonialCard({ quote, name, company, index = 0 }: TestimonialCardProps) {
+export default function TestimonialCard({ quote, name, company, image, index = 0 }: TestimonialCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -32,16 +33,23 @@ export default function TestimonialCard({ quote, name, company, index = 0 }: Tes
           </div>
           
           <div className="relative mb-6">
-            <Quote className="absolute -top-2 -left-2 w-8 h-8 text-accent/20" />
-            <p className="text-foreground leading-relaxed pl-6 italic">
+            <p className="text-foreground leading-relaxed italic">
               "{quote}"
             </p>
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
-              {name.charAt(0)}
-            </div>
+            {image ? (
+              <img 
+                src={image} 
+                alt={name}
+                className="w-12 h-12 rounded-full object-cover"
+              />
+            ) : (
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
+                {name.charAt(0)}
+              </div>
+            )}
             <div>
               <p className="font-heading font-semibold" data-testid={`text-testimonial-name-${name.toLowerCase().replace(/\s+/g, "-")}`}>
                 {name}
