@@ -79,7 +79,9 @@ export default function ContactForm() {
     setIsSubmitting(true);
     try {
       console.log("Sending request to /api/contact...");
-      const response = await fetch("/api/contact", {
+      let response: Response;
+      try {
+        response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,12 +96,19 @@ export default function ContactForm() {
           topic: data.topic || null,
         }),
       });
+      } catch (fetchError) {
+        // Network error - server not reachable
+        if (fetchError instanceof TypeError && fetchError.message.includes("fetch")) {
+          throw new Error("Cannot connect to server. Please make sure the server is running and try again.");
+        }
+        throw fetchError;
+      }
 
       let responseData;
       try {
         responseData = await response.json();
       } catch (e) {
-        throw new Error("Server returned an invalid response");
+        throw new Error("Server returned an invalid response. Please check the server logs.");
       }
 
       if (!response.ok) {
@@ -129,7 +138,18 @@ export default function ContactForm() {
       form.reset();
       setTimeout(() => setIsSuccess(false), 3000);
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to send message. Please try again.";
+      let errorMessage = "Failed to send message. Please try again.";
+      
+      if (error instanceof Error) {
+        errorMessage = error.message;
+        // Provide more helpful messages for common errors
+        if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
+          errorMessage = "Cannot connect to server. Please make sure the server is running on port 5000 and try again.";
+        } else if (error.message.includes("CORS")) {
+          errorMessage = "CORS error. Please check server configuration.";
+        }
+      }
+      
       console.error("Form submission error:", error);
       toast({
         title: "Error",

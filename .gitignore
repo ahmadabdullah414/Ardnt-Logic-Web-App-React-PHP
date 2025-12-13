@@ -4,3 +4,27 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+email_errors.log
+
+# Data files
+contact_submissions.json
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+
+# Local/Replit files
+.local/
