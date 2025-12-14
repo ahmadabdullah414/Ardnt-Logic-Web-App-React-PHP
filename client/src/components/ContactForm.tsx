@@ -144,7 +144,7 @@ export default function ContactForm() {
         errorMessage = error.message;
         // Provide more helpful messages for common errors
         if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
-          errorMessage = "Cannot connect to server. Please make sure the server is running on port 5000 and try again.";
+          errorMessage = "Cannot connect to server. Please make sure the server is running and try again.";
         } else if (error.message.includes("CORS")) {
           errorMessage = "CORS error. Please check server configuration.";
         }

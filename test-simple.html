@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Test</title>
+    <base href="/">
+</head>
+<body>
+    <h1>Testing JavaScript Module</h1>
+    <div id="status">Loading...</div>
+    
+    <script type="module">
+        const status = document.getElementById('status');
+        
+        // Test 1: Can we fetch the file?
+        try {
+            const response = await fetch('/assets/index-DPIr6rsJ.js');
+            console.log('Fetch test:', response.status, response.ok);
+            status.innerHTML += '<br>✓ Fetch: ' + (response.ok ? 'SUCCESS' : 'FAILED ' + response.status);
+            
+            if (response.ok) {
+                // Test 2: Can we import it?
+                try {
+                    const module = await import('/assets/index-DPIr6rsJ.js');
+                    status.innerHTML += '<br>✓ Import: SUCCESS';
+                    status.innerHTML += '<br><strong style="color:green;">Module loaded successfully!</strong>';
+                } catch (e) {
+                    status.innerHTML += '<br>✗ Import: FAILED - ' + e.message;
+                    console.error('Import error:', e);
+                }
+            }
+        } catch (e) {
+            status.innerHTML += '<br>✗ Fetch: FAILED - ' + e.message;
+            console.error('Fetch error:', e);
+        }
+    </script>
+</body>
+</html>
+

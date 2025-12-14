@@ -1,0 +1,70 @@
+# ArdntLogic PHP Backend Routing
+# This file handles routing for the PHP backend
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Set base directory (adjust if your project is in a subdirectory)
+RewriteBase /
+
+# Handle OPTIONS preflight requests for CORS
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
+
+# Handle API routes - Route /api/* requests to api/*.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/contact$ api/contact.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/health$ api/health.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/test-smtp$ api/test-smtp.php [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/logo$ api/logo.php [L,QSA]
+
+# Handle logo serving
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^logo\.png$ api/logo.php [L,QSA]
+
+# Serve static files from dist/public (production build)
+# First, try to serve actual files if they exist
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.*)$ - [L]
+
+# Try to serve from dist/public for assets
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/assets/
+RewriteCond %{DOCUMENT_ROOT}/dist/public%{REQUEST_URI} -f
+RewriteRule ^assets/(.*)$ dist/public/assets/$1 [L]
+
+# Try to serve other static files from dist/public
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/dist/public%{REQUEST_URI} -f
+RewriteRule ^(.*)$ dist/public/$1 [L]
+
+# For SPA routing: serve index.html for all non-API routes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteRule ^(.*)$ index.php [L,QSA]
+
+# Security: Prevent direct access to sensitive files
+<FilesMatch "^(config|utils|\.env|\.git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# CORS headers for API endpoints
+<IfModule mod_headers.c>
+    <FilesMatch "\.php$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+    </FilesMatch>
+</IfModule>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Test Page</h1>
+    <p>If you see this, PHP/HTML is working.</p>
+    <div id="test-js">JavaScript not loaded yet...</div>
+    <script>
+        document.getElementById('test-js').textContent = 'JavaScript is working!';
+        console.log('JavaScript executed successfully');
+    </script>
+    <hr>
+    <h2>Testing React App Assets:</h2>
+    <p>Check browser console (F12) for any errors.</p>
+    <script type="module">
+        console.log('ES6 modules are supported');
+        try {
+            const response = await fetch('/assets/index-DPIr6rsJ.js');
+            console.log('JS file fetch:', response.ok ? 'SUCCESS' : 'FAILED', response.status);
+        } catch (e) {
+            console.error('JS file fetch error:', e);
+        }
+    </script>
+</body>
+</html>
+

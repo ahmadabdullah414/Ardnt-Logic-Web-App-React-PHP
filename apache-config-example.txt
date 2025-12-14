@@ -1,0 +1,18 @@
+# Apache Configuration Changes Needed
+# File: C:\xampp\apache\conf\httpd.conf
+
+# FIND THIS LINE (around line 59):
+Listen 80
+
+# CHANGE TO:
+Listen 8080
+
+# ALSO FIND (around line 227):
+ServerName localhost:80
+
+# CHANGE TO:
+ServerName localhost:8080
+
+# SAVE THE FILE
+# RESTART APACHE FROM XAMPP CONTROL PANEL
+

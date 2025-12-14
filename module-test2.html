@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><base href="/"></head>
+<body>
+<div id="root">Testing...</div>
+<script type="module">
+console.log("Starting module test...");
+try {
+    const response = await fetch("/assets/index-DPIr6rsJ.js");
+    console.log("Fetch status:", response.status, response.ok);
+    console.log("Content-Type:", response.headers.get("Content-Type"));
+    
+    if (!response.ok) {
+        throw new Error("HTTP " + response.status);
+    }
+    
+    const text = await response.text();
+    console.log("File size:", text.length);
+    console.log("First 100 chars:", text.substring(0, 100));
+    
+    // Try to import
+    console.log("Attempting import...");
+    const module = await import("/assets/index-DPIr6rsJ.js");
+    console.log("SUCCESS! Module imported:", module);
+    document.getElementById("root").innerHTML = "<h1 style='color:green;'>Module Import SUCCESS!</h1>";
+} catch(e) {
+    console.error("FAILED:", e);
+    document.getElementById("root").innerHTML = "<h1 style='color:red;'>Module Import FAILED</h1><pre style='background:#f0f0f0;padding:10px;'>" + e.message + "\n\n" + e.stack + "</pre>";
+}
+</script>
+</body>
+</html>

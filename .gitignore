@@ -28,3 +28,8 @@ Thumbs.db
 
 # Local/Replit files
 .local/
+
+# PHP
+vendor/
+composer.lock
+php_errors.log

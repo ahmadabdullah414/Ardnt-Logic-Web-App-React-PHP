@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React Test</title>
+    <base href="/">
+</head>
+<body>
+    <div id="root" style="padding: 20px; font-family: Arial;">
+        <p>Waiting for React to load...</p>
+    </div>
+    
+    <script type="module">
+        console.log("Test script started");
+        
+        // Test if React JS file loads
+        try {
+            const response = await fetch('/assets/index-DPIr6rsJ.js');
+            console.log("JS file fetch:", response.ok ? "SUCCESS" : "FAILED", response.status);
+            
+            if (response.ok) {
+                const text = await response.text();
+                console.log("JS file size:", text.length, "bytes");
+                console.log("JS file starts with:", text.substring(0, 100));
+                
+                // Check if it contains React
+                if (text.includes('react') || text.includes('React')) {
+                    console.log("✓ JS file contains React");
+                } else {
+                    console.warn("⚠ JS file doesn't seem to contain React");
+                }
+            }
+        } catch (e) {
+            console.error("Error loading JS:", e);
+        }
+        
+        // Try to load the actual module
+        try {
+            console.log("Attempting to import React app...");
+            // This will fail if there's a module error, but we'll catch it
+            import('/assets/index-DPIr6rsJ.js').then(() => {
+                console.log("✓ Module imported successfully");
+            }).catch(err => {
+                console.error("✗ Module import failed:", err);
+                document.getElementById('root').innerHTML = 
+                    '<h1 style="color:red;">Module Import Error</h1>' +
+                    '<p><strong>Error:</strong> ' + err.message + '</p>' +
+                    '<p>Check browser console (F12) for full details.</p>';
+            });
+        } catch (e) {
+            console.error("Import error:", e);
+        }
+        
+        // Monitor root element
+        const root = document.getElementById('root');
+        const observer = new MutationObserver(function(mutations) {
+            console.log("Root element changed!");
+            mutations.forEach(function(mutation) {
+                console.log("Mutation:", mutation.type, mutation.addedNodes.length, "nodes added");
+            });
+        });
+        observer.observe(root, { childList: true, subtree: true });
+        
+        console.log("Monitoring root element for changes...");
+    </script>
+</body>
+</html>
+

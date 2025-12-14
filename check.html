@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check</title>
+    <base href="/">
+</head>
+<body>
+    <h1>Website Status Check</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        let html = '';
+        
+        // Check 1: Root element
+        const root = document.getElementById('root');
+        html += '<p>Root element: ' + (root ? '✓ Found' : '✗ Missing') + '</p>';
+        
+        // Check 2: Test JavaScript file
+        fetch('/assets/index-DPIr6rsJ.js', { method: 'HEAD' })
+            .then(r => {
+                html += '<p>JS File: ✓ Accessible (Status ' + r.status + ')</p>';
+                html += '<p>Content-Type: ' + r.headers.get('Content-Type') + '</p>';
+                results.innerHTML = html;
+                
+                // Try to import
+                return import('/assets/index-DPIr6rsJ.js');
+            })
+            .then(() => {
+                html += '<p style="color:green;"><strong>✓ Module imported successfully!</strong></p>';
+                results.innerHTML = html;
+            })
+            .catch(e => {
+                html += '<p style="color:red;"><strong>✗ Module import failed: ' + e.message + '</strong></p>';
+                results.innerHTML = html;
+                console.error('Import error:', e);
+            });
+    </script>
+</body>
+</html>
+

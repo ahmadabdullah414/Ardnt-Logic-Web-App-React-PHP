@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagnostic Test</title>
+    <style>body { font-family: Arial; padding: 20px; } .success { color: green; } .error { color: red; }</style>
+</head>
+<body>
+    <h1>Website Diagnostic Test</h1>
+    <div id="results"></div>
+    <script>
+        const results = document.getElementById("results");
+        const tests = [];
+        
+        // Test 1: Basic JavaScript
+        tests.push({ name: "JavaScript Execution", status: true });
+        
+        // Test 2: ES6 Modules
+        let moduleSupport = false;
+        try {
+            eval("import('data:text/javascript,')");
+            moduleSupport = true;
+        } catch(e) {
+            moduleSupport = false;
+        }
+        tests.push({ name: "ES6 Module Support", status: moduleSupport });
+        
+        // Test 3: Fetch API
+        fetch("/api/health")
+            .then(r => r.json())
+            .then(data => {
+                tests.push({ name: "API Connection", status: data.status === "ok" });
+                renderResults();
+            })
+            .catch(e => {
+                tests.push({ name: "API Connection", status: false, error: e.message });
+                renderResults();
+            });
+        
+        // Test 4: Check if React JS file exists
+        fetch("/assets/index-DPIr6rsJ.js", { method: "HEAD" })
+            .then(r => {
+                tests.push({ name: "React JS File", status: r.ok });
+                renderResults();
+            })
+            .catch(e => {
+                tests.push({ name: "React JS File", status: false, error: e.message });
+                renderResults();
+            });
+        
+        function renderResults() {
+            if (tests.length < 4) return;
+            let html = "<h2>Test Results:</h2><ul>";
+            tests.forEach(test => {
+                const status = test.status ? "✓ PASS" : "✗ FAIL";
+                const color = test.status ? "success" : "error";
+                html += `<li class="${color}">${test.name}: ${status}`;
+                if (test.error) html += ` (${test.error})`;
+                html += "</li>";
+            });
+            html += "</ul>";
+            results.innerHTML = html;
+        }
+        
+        // Initial render
+        setTimeout(renderResults, 1000);
+    </script>
+</body>
+</html>
